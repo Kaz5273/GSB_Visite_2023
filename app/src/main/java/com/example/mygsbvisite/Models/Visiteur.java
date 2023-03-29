@@ -26,10 +26,12 @@ public class Visiteur implements Serializable {
     private String matricule;
 
 
+
     public Visiteur(String unUsername, String unPassword){
         this.username = unUsername;
         this.password = unPassword;
     }
+
 
     public int getId() {
         return id;
@@ -102,5 +104,6 @@ public class Visiteur implements Serializable {
     public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
+
 
 }
