@@ -22,6 +22,7 @@ public class VisiteurActivity extends AppCompatActivity {
     private ActivityVisiteurBinding binding;
     private String username, token;
     private Visiteurs lesVisiteurs;
+    private Visiteur visiteur;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +47,14 @@ public class VisiteurActivity extends AppCompatActivity {
                lesVisiteurs = response.body();
                for (Visiteur unVisiteur : lesVisiteurs.getVisiteurs()){
                    if(unVisiteur.getUsername().equals(username)){
-
+                       visiteur = unVisiteur;
                    }
                }
+               binding.textViewVisiteurNom.setText(visiteur.getNom());
+               binding.textViewVisiteurPrenom.setText(visiteur.getPrenom());
+               binding.textViewVisiteurTel.setText(visiteur.getTelephone());
+               binding.textViewVisiteurMail.setText(visiteur.getMail());
+               binding.txtMatricule.setText(visiteur.getMatricule());
             }
             @Override
             public void onFailure(Call<Visiteurs> call, Throwable t) {

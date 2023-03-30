@@ -16,4 +16,6 @@ public interface GSBServices {
 
     @GET("visiteurs")
     Call<Visiteurs> getAllVisiteurs(@Header("Authorization")String authorization);
+
+
 }

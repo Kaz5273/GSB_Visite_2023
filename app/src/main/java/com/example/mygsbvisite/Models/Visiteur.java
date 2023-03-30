@@ -25,6 +25,8 @@ public class Visiteur implements Serializable {
     @SerializedName("matricule")
     private String matricule;
 
+    private ArrayList<Praticien>praticiens;
+
 
 
     public Visiteur(String unUsername, String unPassword){
