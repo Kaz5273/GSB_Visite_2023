@@ -1,5 +1,6 @@
 package com.example.mygsbvisite.Interfaces;
 
+import com.example.mygsbvisite.Models.Praticien;
 import com.example.mygsbvisite.Models.Token;
 import com.example.mygsbvisite.Models.Visiteur;
 import com.example.mygsbvisite.Models.Visiteurs;
@@ -9,6 +10,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface GSBServices {
     @POST("login_check")
@@ -17,5 +19,6 @@ public interface GSBServices {
     @GET("visiteurs")
     Call<Visiteurs> getAllVisiteurs(@Header("Authorization")String authorization);
 
-
+    @GET("praticiens/{id}")
+    Call<Praticien> getPraticiens(@Header("Authorization") String authorization, @Path("id") String id);
 }

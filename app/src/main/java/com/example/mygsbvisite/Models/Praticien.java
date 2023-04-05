@@ -1,32 +1,50 @@
 package com.example.mygsbvisite.Models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Praticien implements Serializable {
-
+    @SerializedName("id")
     private int id;
+    @SerializedName("nom")
     private String nom;
+    @SerializedName("prenom")
     private String prenom;
+    @SerializedName("mail")
     private String email;
+    @SerializedName("telephone")
     private String telephone;
+    @SerializedName("rue")
     private String rue;
+    @SerializedName("codePostal")
     private String codePostal;
+    @SerializedName("ville")
     private String ville;
+    @SerializedName("coeffNotoriete")
     private String coef_Notoriete;
-    private ArrayList<Visiteur> visiteurs;
-    private ArrayList<Visite> visites;
 
-    public Praticien(int id, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String coef_Notoriete) {
+
+
+
+    @SerializedName("visiteurs")
+    private ArrayList<String> visiteurs;
+    @SerializedName("visites")
+    private ArrayList<String> visites;
+//, String email, String telephone, String rue, String codePostal, String ville, String coef_Notoriete
+//        this.email = email;
+//        this.telephone = telephone;
+//        this.rue = rue;
+//        this.codePostal = codePostal;
+//        this.ville = ville;
+//        this.coef_Notoriete = coef_Notoriete;
+
+    public Praticien(int id, String nom, String prenom) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
-        this.email = email;
-        this.telephone = telephone;
-        this.rue = rue;
-        this.codePostal = codePostal;
-        this.ville = ville;
-        this.coef_Notoriete = coef_Notoriete;
+
     }
 
     public String getNom() {
@@ -100,5 +118,13 @@ public class Praticien implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public ArrayList<String> getVisiteurs() {
+        return visiteurs;
+    }
+
+    public ArrayList<String> getVisites() {
+        return visites;
     }
 }

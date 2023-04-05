@@ -24,15 +24,19 @@ public class Visiteur implements Serializable {
     private String mail;
     @SerializedName("matricule")
     private String matricule;
-
-    private ArrayList<Praticien>praticiens;
+    @SerializedName("praticien")
+    private ArrayList<String>praticiensStr;
 
 
 
     public Visiteur(String unUsername, String unPassword){
         this.username = unUsername;
         this.password = unPassword;
+
+
     }
+
+
 
 
     public int getId() {
@@ -107,5 +111,9 @@ public class Visiteur implements Serializable {
         this.matricule = matricule;
     }
 
+
+    public ArrayList<String> getPraticiensStr() {
+        return praticiensStr;
+    }
 
 }

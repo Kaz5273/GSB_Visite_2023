@@ -47,8 +47,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-        holder.textViewPraticiensNom.setText(dataModelListPraticiens.get(position).getNom());
-        holder.textViewPraticiensPrenom.setText(dataModelListPraticiens.get(position).getPrenom());
+        holder.textViewPraticiensNom.setText(String.valueOf(dataModelListPraticiens.get(position).getNom()));
+        holder.textViewPraticiensPrenom.setText(String.valueOf(dataModelListPraticiens.get(position).getPrenom()));
     }
 
     @Override
