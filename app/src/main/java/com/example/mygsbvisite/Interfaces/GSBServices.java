@@ -2,6 +2,7 @@ package com.example.mygsbvisite.Interfaces;
 
 import com.example.mygsbvisite.Models.Praticien;
 import com.example.mygsbvisite.Models.Token;
+import com.example.mygsbvisite.Models.Visite;
 import com.example.mygsbvisite.Models.Visiteur;
 import com.example.mygsbvisite.Models.Visiteurs;
 
@@ -21,4 +22,7 @@ public interface GSBServices {
 
     @GET("praticiens/{id}")
     Call<Praticien> getPraticiens(@Header("Authorization") String authorization, @Path("id") String id);
+
+    @GET("visites/{id}")
+    Call<Visite> getVisites(@Header("Authorization") String authorization, @Path("id") String id);
 }

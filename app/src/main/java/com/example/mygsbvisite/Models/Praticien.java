@@ -24,10 +24,6 @@ public class Praticien implements Serializable {
     private String ville;
     @SerializedName("coeffNotoriete")
     private String coef_Notoriete;
-
-
-
-
     @SerializedName("visiteurs")
     private ArrayList<String> visiteurs;
     @SerializedName("visites")

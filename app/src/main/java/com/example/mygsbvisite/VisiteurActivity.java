@@ -99,6 +99,8 @@ public class VisiteurActivity extends AppCompatActivity {
                     public void onClick(View view, int position) {
                         Intent myIntent = new Intent(getApplicationContext(), PraticienActivity.class);
                         myIntent.putExtra("praticien", dataPraticiens.get(position));
+                        myIntent.putExtra("token", token);
+                        myIntent.putExtra("username", username);
                         startActivity(myIntent);
                     }
                 }));
