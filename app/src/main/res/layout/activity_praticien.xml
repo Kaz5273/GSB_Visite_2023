@@ -128,14 +128,25 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewVisite"
-        android:layout_width="328dp"
-        android:layout_height="311dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="330dp"
+        android:layout_height="244dp"
+        android:layout_marginTop="20dp"
         android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.456"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/textViewPraticienCoef"></androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Créer une visite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewVisite" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

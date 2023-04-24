@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mygsbvisite.Models.Visite;
 import com.example.mygsbvisite.R;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class RecyclerViewVisite extends RecyclerView.Adapter<RecyclerViewVisite.RecyclerViewHolder>{
     private List<Visite> dataModelListVisite;
+    private String dateTime;
 
     public RecyclerViewVisite(List<Visite> dataModelListVisite){
         this.dataModelListVisite = dataModelListVisite;
@@ -43,7 +46,9 @@ public class RecyclerViewVisite extends RecyclerView.Adapter<RecyclerViewVisite.
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-        holder.textViewVisiteDate.setText(dataModelListVisite.get(position).getDateVisite().toString());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        dateTime = simpleDateFormat.format(dataModelListVisite.get(position).getDateVisite());
+        holder.textViewVisiteDate.setText(dateTime);
         holder.textViewVisiteCommentaire.setText(String.valueOf(dataModelListVisite.get(position).getCommentaire()));
     }
 

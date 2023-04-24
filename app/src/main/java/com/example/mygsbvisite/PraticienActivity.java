@@ -1,14 +1,18 @@
 package com.example.mygsbvisite;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.mygsbvisite.Adapters.RecyclerViewAdapter;
 import com.example.mygsbvisite.Adapters.RecyclerViewVisite;
 import com.example.mygsbvisite.Interfaces.GSBServices;
+import com.example.mygsbvisite.Interfaces.RecyclerViewClickListener;
+import com.example.mygsbvisite.Listeners.RecyclerTouchListener;
 import com.example.mygsbvisite.Models.Praticien;
 import com.example.mygsbvisite.Models.RetrofitClientInstance;
 import com.example.mygsbvisite.Models.Visite;
@@ -73,12 +77,26 @@ public class PraticienActivity extends AppCompatActivity {
                 }
             });
         }
-
-
-
-
-
-
-
+        binding.recyclerViewVisite.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        binding.recyclerViewVisite.setLayoutManager(layoutManager);
+        binding.recyclerViewVisite.setFocusable(false);
+        binding.recyclerViewVisite.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), binding.recyclerViewVisite, new RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent myIntent = new Intent(getApplicationContext(), VisitesActivity.class);
+                myIntent.putExtra("visite", dataVisite.get(position));
+                myIntent.putExtra("token", token);
+                myIntent.putExtra("username", username);
+                startActivity(myIntent);
+            }
+        }));
+        binding.btnCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getApplicationContext(), CreateVisiteActivity.class);
+                startActivity(myIntent);
+            }
+        });
     }
 }
