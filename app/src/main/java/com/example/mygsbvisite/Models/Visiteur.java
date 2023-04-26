@@ -116,4 +116,10 @@ public class Visiteur implements Serializable {
         return praticiensStr;
     }
 
+    public String formatUrlWithId(int id) {
+        String baseUrl = "/api/visiteurs/";
+        String formattedId = String.format("%s", id);
+        return baseUrl + formattedId;
+    }
+
 }

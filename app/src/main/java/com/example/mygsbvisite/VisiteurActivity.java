@@ -101,6 +101,7 @@ public class VisiteurActivity extends AppCompatActivity {
                         myIntent.putExtra("praticien", dataPraticiens.get(position));
                         myIntent.putExtra("token", token);
                         myIntent.putExtra("username", username);
+                        myIntent.putExtra("visiteur", visiteur);
                         startActivity(myIntent);
                     }
                 }));

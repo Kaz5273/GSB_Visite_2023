@@ -123,4 +123,10 @@ public class Praticien implements Serializable {
     public ArrayList<String> getVisites() {
         return visites;
     }
+
+    public String formatUrlWithId(int id) {
+        String baseUrl = "/api/praticiens/";
+        String formattedId = String.format("%s", id);
+        return baseUrl + formattedId;
+    }
 }

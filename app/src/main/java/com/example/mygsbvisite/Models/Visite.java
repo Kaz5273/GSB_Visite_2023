@@ -6,16 +6,26 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Visite implements Serializable {
-    @SerializedName("id")
-    private int id;
     @SerializedName("dateVisite")
     private Date dateVisite;
     @SerializedName("commentaire")
     private String commentaire;
+    @SerializedName("visiteur")
+    private String visiteur;
+    @SerializedName("praticien")
+    private String praticien;
 
-    public int getId() {
-        return id;
+
+    public Visite( Date dateVisite, String commentaire, String visiteur, String praticien) {
+
+        this.dateVisite = dateVisite;
+        this.commentaire = commentaire;
+        this.visiteur = visiteur;
+        this.praticien = praticien;
     }
+
+
+
 
     public Date getDateVisite() {
         return dateVisite;
@@ -23,5 +33,12 @@ public class Visite implements Serializable {
 
     public String getCommentaire() {
         return commentaire;
+    }
+    public String getVisiteur() {
+        return visiteur;
+    }
+
+    public String getPraticien() {
+        return praticien;
     }
 }

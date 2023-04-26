@@ -1,10 +1,15 @@
 package com.example.mygsbvisite;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -16,6 +21,7 @@ import com.example.mygsbvisite.Listeners.RecyclerTouchListener;
 import com.example.mygsbvisite.Models.Praticien;
 import com.example.mygsbvisite.Models.RetrofitClientInstance;
 import com.example.mygsbvisite.Models.Visite;
+import com.example.mygsbvisite.Models.Visiteur;
 import com.example.mygsbvisite.databinding.ActivityMainBinding;
 import com.example.mygsbvisite.databinding.ActivityPraticienBinding;
 
@@ -29,8 +35,25 @@ public class PraticienActivity extends AppCompatActivity {
     private ActivityPraticienBinding binding;
     private String username, token;
     private Praticien praticien;
+    private Visiteur visiteur;
     private ArrayList<Visite> dataVisite;
     private RecyclerViewVisite myAdapterVisite;
+
+    private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new
+            ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if(result.getResultCode() == 1){
+                        Intent resultIntent = result.getData();
+                        if(resultIntent != null){
+                           Visite uneVisite = (Visite) resultIntent.getSerializableExtra("newVisite");
+                           dataVisite.add(uneVisite);
+                           myAdapterVisite.notifyDataSetChanged();
+                        }
+                    }
+                }
+            });
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +66,8 @@ public class PraticienActivity extends AppCompatActivity {
         praticien = (Praticien)myIntent.getSerializableExtra("praticien");
         username = (String)myIntent.getSerializableExtra("username");
         token = (String)myIntent.getSerializableExtra("token");
+        visiteur = (Visiteur)myIntent.getSerializableExtra("visiteur");
+
 
         binding.textViewPraticiensNom.setText(praticien.getNom());
         binding.textViewPraticienPrenom.setText(praticien.getPrenom());
@@ -89,13 +114,18 @@ public class PraticienActivity extends AppCompatActivity {
                 myIntent.putExtra("token", token);
                 myIntent.putExtra("username", username);
                 startActivity(myIntent);
+
             }
         }));
         binding.btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(getApplicationContext(), CreateVisiteActivity.class);
-                startActivity(myIntent);
+                Intent myIntent = new Intent(PraticienActivity.this, CreateVisiteActivity.class);
+                myIntent.putExtra("token", token);
+                myIntent.putExtra("username", username);
+                myIntent.putExtra("visiteur", visiteur);
+                myIntent.putExtra("praticien", praticien);
+                activityResultLauncher.launch(myIntent);
             }
         });
     }
